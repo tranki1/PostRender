@@ -11,7 +11,7 @@ class FullPost extends Component {
         //check condition to fetch data without infinite loops
       if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
         axios
-          .get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
+          .get("/posts/" + this.props.id)
           .then(post => {
             this.setState({ loadedPost: post.data });
           });
@@ -19,7 +19,7 @@ class FullPost extends Component {
     }
   }
   deletePostHandler = ()=> {
-    axios.delete("https://jsonplaceholder.typicode.com/posts/" + this.state.loadedPost.id)
+    axios.delete("/posts/" + this.state.loadedPost.id)
       .then(response=>{
         return console.log(response);
       })
